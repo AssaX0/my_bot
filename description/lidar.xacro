@@ -2,9 +2,9 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
 
     <joint name="laser_joint" type="fixed">
-        <parent link="chassis"/>
+        <parent link="wheelbase"/>
         <child link="laser_frame"/>
-        <origin xyz="0.1 0 0.175" rpy="0 0 0"/>
+        <origin xyz="0 0 0.09561" rpy="0 0 0"/>
     </joint>
 
     <link name="laser_frame">
@@ -47,7 +47,7 @@
                 <ros>
                     <argument>~/out:=scan</argument>
                 </ros>
-                <output_type>sensor_msgs/LaserScam</output_type>
+                <output_type>sensor_msgs/LaserScan</output_type>
                 <frame_name>laser_frame</frame_name>
             </plugin>
         </sensor>
