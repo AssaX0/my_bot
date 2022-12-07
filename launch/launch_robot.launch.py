@@ -1,7 +1,12 @@
 import os
 
 from launch import LaunchDescription
+
 from launch_ros.actions import Node
+from launch.actions import IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.substitutions import PathJoinSubstitution, TextSubstitution
+from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
     md25_spawner = Node(
@@ -21,34 +26,16 @@ def generate_launch_description():
                 }]
     )
 
-    # Für Lidar
-    share_dir = get_package_share_directory('ydlidar_ros2_driver')
-    parameter_file = LaunchConfiguration('params_file')
-    node_name = 'ydlidar_ros2_driver_node'
-
-    params_declare = DeclareLaunchArgument('params_file',
-                                           default_value=os.path.join(
-                                               share_dir, 'params', 'ydlidar.yaml'),
-                                           description='FPath to the ROS2 parameters file to use.')
-
-    driver_node = LifecycleNode(package='ydlidar_ros2_driver',
-                                node_executable='ydlidar_ros2_driver_node',
-                                node_name='ydlidar_ros2_driver_node',
-                                output='screen',
-                                emulate_tty=True,
-                                parameters=[parameter_file],
-                                node_namespace='/',
-                                )
-    tf2_node = Node(package='tf2_ros',
-                    node_executable='static_transform_publisher',
-                    node_name='static_tf_pub_laser',
-                    arguments=['0', '0', '0.02','0', '0', '0', '1','base_link','laser_frame'],
-                    )
+    lidar_spawner = IncludeLaunchDescription(
+            PythonLaunchDescriptionSource([
+                PathJoinSubstitution([
+                    FindPackageShare('ydlidar_ros2_driver'),
+                    'ydlidar_launch.py'
+                ])
+            ]))
 
     return LaunchDescription([
         md25_spawner,
         camera_spawner,
-        params_declare,
-        driver_node,
-        tf2_node,
+        lidar_spawner
     ])
