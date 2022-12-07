@@ -39,7 +39,7 @@ def generate_launch_description():
             #     'use_provided_red': 'True',
             #     'new_background_r': TextSubstitution(text=str(colors['background_r']))
             # }.items()
-        )
+        ))
 
 
     return LaunchDescription([
