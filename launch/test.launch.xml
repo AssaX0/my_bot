@@ -1,5 +1,12 @@
-<node pkg="my_package" exec="md25_drive_node" name="driver" namespace="my_bot"/>
-<node pkg="v4l2_camera" exec="v4l2_camera_node" name="camera" namespace="my_bot">
-    <param name="image_size" value="[1920,1080]"/>
-    <param name="camera_frame_id" value="'camera_link_optical'"/>
-</node>
+<?xml version="1.0"?>
+
+<launch>
+    <node pkg="my_package" exec="md25_drive_node" name="driver" namespace="my_bot"/>
+
+    <node pkg="v4l2_camera" exec="v4l2_camera_node" name="camera" namespace="my_bot">
+        <param name="image_size" value="[1920,1080]"/>
+        <param name="camera_frame_id" value="'camera_link_optical'"/>
+    </node>
+
+    <include file="$(find-pkg-share ydlidar_ros2_driver)/launch/ydlidar_launch.py"/>
+</launch>
