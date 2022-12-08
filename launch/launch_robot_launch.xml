@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <launch>
-    <node pkg="my_package" exec="md25_drive_node" name="driver" namespace="my_bot"/>
+    <node pkg="my_package" exec="md25_drive_node"/>
 
     <include file="$(find-pkg-share my_bot)/launch/launch_camera.launch.py"/>
 
