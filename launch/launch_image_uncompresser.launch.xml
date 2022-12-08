@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<launch>
+    <node pkg="image_transport" exec="republish">
+        <param name="input" value="compressed"/>
+        <param name="output" value="raw"/>
+        <remap from="in/compressed" to="image_raw/compressed"/>
+        <remap from="out" to="image_raw/uncompressed"/>
+    </node>
+</launch>
