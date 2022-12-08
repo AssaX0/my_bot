@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+
+<launch>
+    <include file="$(find-pkg-share my_bot)/launch/launch_image_uncompresser.launch.xml"/>
+    <node pkg="rviz2" exec="rviz2" output="screen" args="-d $(find-pkg-share my_bot)/config/drive_mybot.rviz"/>
+</launch>
