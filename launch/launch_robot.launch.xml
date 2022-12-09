@@ -2,7 +2,7 @@
 
 <launch>
     <include file="$(find-pkg-share my_bot)/launch/rsp.launch.py">
-        <arg name="use_sim_time" default="false"/>
+        <param name="use_sim_time" default="false"/>
     </include>
 
     <node pkg="my_package" exec="md25_drive_node"/>
