@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 
 <launch>
-    <include file="$(find-pkg-share my_bot)/launch/launch_camera.launch.py">
-        <arg name="use_sim_time" default="false"/>
+    <include file="$(find-pkg-share my_bot)/launch/launch_camera.launch.py" args="-d $(find-pkg-share my_bot)/config/drive_mybot.rviz">
+        <arg name="'use_sim_time'" default="'false'"/>
     </include>
     <node pkg="my_package" exec="md25_drive_node"/>
     <include file="$(find-pkg-share my_bot)/launch/launch_camera.launch.py"/>
