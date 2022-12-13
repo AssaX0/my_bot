@@ -2,7 +2,7 @@
 
 <launch>
     <include file="$(find-pkg-share my_bot)/launch/launch_robot.launch.py"/>
-    <node pkg="my_package" exec="md25_drive_node"/>
+    <node pkg="my_package" exec="odom_node"/>
     <include file="$(find-pkg-share my_bot)/launch/launch_camera.launch.py"/>
     <include file="$(find-pkg-share ydlidar_ros2_driver)/launch/ydlidar_launch.py"/>
 </launch>
