@@ -90,7 +90,7 @@
 
     <!-- RIGHT WHEEL -->
 
-    <joint name="right_wheel_joint" type="revolute">
+    <joint name="right_wheel_joint" type="continuous">
         <parent link="base_link"/>
         <child link="right_wheel"/>
         <origin xyz="0 -0.1425 0" rpy="${pi/2} 0 0"/>
@@ -120,7 +120,7 @@
     </gazebo>
 
 	<!-- LEFT WHEEL -->
-    <joint name="left_wheel_joint" type="revolute">
+    <joint name="left_wheel_joint" type="continuous">
         <parent link="base_link"/>
         <child link="left_wheel"/>
         <origin xyz="0 0.1425 0" rpy="${pi/2} 0 0"/>
